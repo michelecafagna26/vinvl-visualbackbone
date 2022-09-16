@@ -15,7 +15,7 @@ Then run:
 pip install -r requirements.txt
 
 # glone this repo
-git clone git@github.com:michelecafagna26/vinvl_visualbackbone.git
+git clone git@github.com:michelecafagna26/vinvl-visualbackbone.git
 
 # install Scene Graph Detection with the VisualBackbone apis
 pyton setup.py build develop
