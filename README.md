@@ -11,6 +11,9 @@ Create your virtual environment an install the following dependencies according 
 
 Then run:
 ```bash
+# good practice
+pip install --upgrade pip
+
 # install the requirements
 pip install -r requirements.txt
 
