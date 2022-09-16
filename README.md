@@ -23,7 +23,7 @@ pyton setup.py build develop
 You can check the original [INSTALL.md](INSTALL.md) for alternative installation options
 
 ----
-## Quick start
+## Quick start: feature extraction
 
 ```python
 from scene_graph_benchmark.wrappers import VinVLVisualBackbone
