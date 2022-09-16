@@ -57,7 +57,7 @@ class VinVLVisualBackbone(object):
         self.model.to(self.device)
 
         self.checkpointer = DetectronCheckpointer(cfg, self.model, save_dir="")
-        self.checkpointer.load(str(Path(BASE_PATH, cfg.MODEL.WEIGHT)))
+        self.checkpointer.load(str(Path(BASE_PATH, "maskrcnn_benchmark", cfg.MODEL.WEIGHT)))
 
         with open(Path(BASE_PATH, cfg.DATASETS.LABELMAP_FILE), "rb") as fp:
             label_dict = json.load(fp)
