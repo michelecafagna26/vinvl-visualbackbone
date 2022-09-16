@@ -1,0 +1,1 @@
+from scene_graph_benchmark.wrappers.wrappers import VinVLVisualBackbone
