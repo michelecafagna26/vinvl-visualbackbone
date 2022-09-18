@@ -27,7 +27,7 @@ You can check the original [INSTALL.md](INSTALL.md) for alternative installation
 
 ## Model downloading (strongly suggested)
 
-If not present, the model is automatically downloaded. However, *wget is way faster, therefore, it's advised to manually download it*
+If not present, the model is automatically downloaded. However, *it can take a while, so it's advised to manually download it*
 ```bash
 
 mkdir -p scene_graph_benchmark/models/vinvl
