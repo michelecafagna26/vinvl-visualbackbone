@@ -14,9 +14,8 @@ Create your virtual environment an install the following dependencies according 
 If not present, the model is automatically downloaded. However, *wget is way faster, therefore, it's advised to manually download it*
 ```bash
 
-cd scene_graph_benchmark
-mkdir -p models/vinvl
-cd models/vinvl
+mkdir -p scene_graph_benchmark/models/vinvl
+cd scene_graph_benchmark/models/vinvl
 
 # download the model
 wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/vinvl_vg_x152c4.pth
