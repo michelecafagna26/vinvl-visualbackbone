@@ -73,7 +73,7 @@ Please consider citing the original project and the VinVL paper
       primaryClass={cs.CV}
 }
 
-inproceedings{zhang2021vinvl,
+@inproceedings{zhang2021vinvl,
   title={Vinvl: Revisiting visual representations in vision-language models},
   author={Zhang, Pengchuan and Li, Xiujun and Hu, Xiaowei and Yang, Jianwei and Zhang, Lei and Wang, Lijuan and Choi, Yejin and Gao, Jianfeng},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
