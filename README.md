@@ -63,7 +63,7 @@ v_feats = np.concatenate((dets['features'],  dets['spatial_features']), axis=1)
 ```
 ## Citations
 Please consider citing the original project and the VinVL paper
-```
+```BibTeX
 @misc{han2021image,
       title={Image Scene Graph Generation (SGG) Benchmark}, 
       author={Xiaotian Han and Jianwei Yang and Houdong Hu and Lei Zhang and Jianfeng Gao and Pengchuan Zhang},
