@@ -11,9 +11,16 @@ import torch
 import json
 import cv2
 from pathlib import Path
+from clint.textui import progress
+import requests
+
 
 BASE_PATH = Path(__file__).parent.parent.parent
 CONFIG_FILE = Path(BASE_PATH, 'sgg_configs/vgattr/vinvl_x152c4.yaml')
+
+MODEL_DIR = Path(BASE_PATH, "models/vinvl")
+_MODEL_URL = "https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/vinvl_vg_x152c4.pth"
+_LABEL_URL = "https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/VG-SGG-dicts-vgoi6-clipped.json"
 
 
 class VinVLVisualBackbone(object):
@@ -55,6 +62,35 @@ class VinVLVisualBackbone(object):
 
         self.model.eval()
         self.model.to(self.device)
+
+        if not Path(cfg.MODEL.WEIGHT).is_file():
+            print(f"{cfg.MODEL.WEIGHT} not found")
+            MODEL_DIR.mkdir(parents=True, exist_ok=True)
+            print(f"created {MODEL_DIR} ")
+
+
+            print(f"downloading {Path(_MODEL_URL).name}")
+            # download the model
+            r = requests.get(_MODEL_URL, stream=True)
+            path = Path(MODEL_DIR, Path(_MODEL_URL).name)
+            print(f"downloading {Path(_MODEL_URL).name} in {path}")
+            with open(path, 'wb') as f:
+                total_length = int(r.headers.get('content-length'))
+                for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length / 1024) + 1):
+                    if chunk:
+                        f.write(chunk)
+                        f.flush()
+
+            # dowload the labelmap
+            print(f"downloading {Path(_LABEL_URL).name}")
+            r = requests.get(_LABEL_URL, stream=True)
+            path = Path(MODEL_DIR, Path(_LABEL_URL).name)
+            with open(path, 'wb') as f:
+                total_length = int(r.headers.get('content-length'))
+                for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length / 1024) + 1):
+                    if chunk:
+                        f.write(chunk)
+                        f.flush()
 
         self.checkpointer = DetectronCheckpointer(cfg, self.model, save_dir="")
         self.checkpointer.load(str(Path(BASE_PATH, cfg.MODEL.WEIGHT)))
