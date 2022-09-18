@@ -9,22 +9,6 @@ Create your virtual environment an install the following dependencies according 
 - PyTorch 1.7
 - torchvision
 
-## Model downloading (strongly suggested)
-
-If not present, the model is automatically downloaded. However, *wget is way faster, therefore, it's advised to manually download it*
-```bash
-
-mkdir -p scene_graph_benchmark/models/vinvl
-cd scene_graph_benchmark/models/vinvl
-
-# download the model
-wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/vinvl_vg_x152c4.pth
-
-# downlaod the label mao
-wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/VG-SGG-dicts-vgoi6-clipped.json
-
-```
-
 Then run:
 ```bash
 # good practice
@@ -41,6 +25,20 @@ pyton setup.py build develop
 ```
 You can check the original [INSTALL.md](INSTALL.md) for alternative installation options
 
+## Model downloading (strongly suggested)
+
+If not present, the model is automatically downloaded. However, *wget is way faster, therefore, it's advised to manually download it*
+```bash
+
+mkdir -p scene_graph_benchmark/models/vinvl
+cd scene_graph_benchmark/models/vinvl
+
+# download the model
+wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/vinvl_vg_x152c4.pth
+
+# downlaod the label mao
+wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/VG-SGG-dicts-vgoi6-clipped.json
+```
 ----
 ## Quick start: feature extraction
 
