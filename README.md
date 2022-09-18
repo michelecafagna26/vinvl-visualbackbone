@@ -9,9 +9,9 @@ Create your virtual environment an install the following dependencies according 
 - PyTorch 1.7
 - torchvision
 
-## Model downloading (suggested)
+## Model downloading (strongly suggested)
 
-If not present, the model is automatically downloaded. However, *it's advised to manually download it since it's faster*
+If not present, the model is automatically downloaded. However, *wget is way faster, therefore, it's advised to manually download it*
 ```bash
 
 cd scene_graph_benchmark
