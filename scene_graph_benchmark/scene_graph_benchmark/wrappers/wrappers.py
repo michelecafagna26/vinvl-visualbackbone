@@ -63,7 +63,7 @@ class VinVLVisualBackbone(object):
         self.model.eval()
         self.model.to(self.device)
 
-        if not Path(cfg.MODEL.WEIGHT).is_file():
+        if not Path(Path(BASE_PATH, cfg.MODEL.WEIGHT)).is_file():
             print(f"{cfg.MODEL.WEIGHT} not found")
             MODEL_DIR.mkdir(parents=True, exist_ok=True)
             print(f"created {MODEL_DIR} ")
