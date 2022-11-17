@@ -20,6 +20,8 @@ pip install --upgrade pip
 # install the requirements
 pip install -r requirements.txt
 
+cd scene_graph_benchmark
+
 # install Scene Graph Detection with the VisualBackbone apis
 pyton setup.py build develop
 ```
