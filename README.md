@@ -67,8 +67,8 @@ detector = VinVLVisualBackbone()
 dets = detector(img_file)
 
 ```
-`dets` contains the following keys: ["boxes", "classes", "scores", "features", "spatial_features"]
-You can obtain the full VinVL's visual features by concatenating the "features" and the "spatial_features"
+`dets` contains the following keys: ```["boxes", "classes", "scores", "features", "spatial_features"]```
+You can obtain the full VinVL's visual features by concatenating "features" and "spatial_features"
 
 ```python
 import numpy as np
