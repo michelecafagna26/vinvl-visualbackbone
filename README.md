@@ -27,13 +27,26 @@ pyton setup.py build develop
 ```
 You can check the original [INSTALL.md](INSTALL.md) for alternative installation options
 
-## Model downloading (strongly suggested)
+## Model download
 
 If not present, the model is automatically downloaded. However, *it can take a while, so it's advised to manually download it **before** running your code*
 ```bash
 
-mkdir -p scene_graph_benchmark/models/vinvl
-cd scene_graph_benchmark/models/vinvl
+mkdir -p scene_graph_benchmark/models/
+cd scene_graph_benchmark/models/
+
+# download from the huggingface model hub
+git lfs install # if not installed
+git clone https://huggingface.co/michelecafagna26/vinvl_vg_x152c4
+```
+
+## Alternative Model download (links might be broken)
+
+If not present, the model is automatically downloaded. However, *it can take a while, so it's advised to manually download it **before** running your code*
+```bash
+
+mkdir -p scene_graph_benchmark/models/vinvl_vg_x152c4
+cd scene_graph_benchmark/models/vinvl_vg_x152c4
 
 # download the model
 wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/vinvl_vg_x152c4.pth
