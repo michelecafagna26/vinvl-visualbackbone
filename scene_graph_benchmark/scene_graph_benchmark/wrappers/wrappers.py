@@ -18,7 +18,7 @@ import requests
 BASE_PATH = Path(__file__).parent.parent.parent
 CONFIG_FILE = Path(BASE_PATH, 'sgg_configs/vgattr/vinvl_x152c4.yaml')
 
-MODEL_DIR = Path(BASE_PATH, "models/vinvl")
+MODEL_DIR = Path(BASE_PATH, "models/vinvl_vg_x152c4")
 _MODEL_URL = "https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/vinvl_vg_x152c4.pth"
 _LABEL_URL = "https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/VG-SGG-dicts-vgoi6-clipped.json"
 
@@ -31,11 +31,11 @@ class VinVLVisualBackbone(object):
         self.device = cfg.MODEL.DEVICE
 
         self.opts = {
-            "MODEL.WEIGHT": "models/vinvl/vinvl_vg_x152c4.pth",
+            "MODEL.WEIGHT": "models/vinvl_vg_x152c4/vinvl_vg_x152c4.pth",
             "MODEL.ROI_HEADS.NMS_FILTER": 1,
             "MODEL.ROI_HEADS.SCORE_THRESH": 0.2,
             "TEST.IGNORE_BOX_REGRESSION": False,
-            "DATASETS.LABELMAP_FILE": "models/vinvl/VG-SGG-dicts-vgoi6-clipped.json",
+            "DATASETS.LABELMAP_FILE": "models/vinvl_vg_x152c4/VG-SGG-dicts-vgoi6-clipped.json",
             "TEST.OUTPUT_FEATURE": True
         }
         if opts:
