@@ -29,9 +29,9 @@ You can check the original [INSTALL.md](INSTALL.md) for alternative installation
 
 ## Model download
 
-If not present, the model is automatically downloaded. However, *it can take a while, so it's advised to manually download it **before** running your code*
-```bash
+Download the model **before** running your code.
 
+```bash
 mkdir -p scene_graph_benchmark/models/
 cd scene_graph_benchmark/models/
 
@@ -39,8 +39,7 @@ cd scene_graph_benchmark/models/
 git lfs install # if not installed
 git clone https://huggingface.co/michelecafagna26/vinvl_vg_x152c4
 ```
-
-## Alternative Model download (links might be broken)
+<!-- ## Alternative Model download (links might be broken )**(deprecated)**
 
 If not present, the model is automatically downloaded. However, *it can take a while, so it's advised to manually download it **before** running your code*
 ```bash
@@ -54,6 +53,8 @@ wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/
 # downlaod the labelmap
 wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/VG-SGG-dicts-vgoi6-clipped.json
 ```
+-->
+
 ----
 ## Quick start: feature extraction
 
