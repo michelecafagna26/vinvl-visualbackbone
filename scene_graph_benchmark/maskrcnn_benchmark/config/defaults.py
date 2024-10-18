@@ -3,7 +3,7 @@
 import os
 
 from yacs.config import CfgNode as CN
-
+import torch
 
 # -----------------------------------------------------------------------------
 # Convention about Training / Test specific parameters
@@ -26,14 +26,14 @@ _C.MODEL.RPN_ONLY = False
 _C.MODEL.MASK_ON = False
 _C.MODEL.RETINANET_ON = False
 _C.MODEL.KEYPOINT_ON = False
-_C.MODEL.DEVICE = "cuda"
+_C.MODEL.DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 _C.MODEL.META_ARCHITECTURE = "GeneralizedRCNN"
 _C.MODEL.CLS_AGNOSTIC_BBOX_REG = False
 
 # If the WEIGHT starts with a catalog://, like :R-50, the code will look for
 # the path in paths_catalog. Else, it will use it as the specified absolute
 # path
-_C.MODEL.WEIGHT = ""
+_C.MODEL.WEIGHT = "models/vinvl_vg_x152c4/vinvl_vg_x152c4.pth"
 
 
 # -----------------------------------------------------------------------------
@@ -92,7 +92,7 @@ _C.DATALOADER.SIZE_DIVISIBILITY = 0
 # are not batched with portrait images.
 _C.DATALOADER.ASPECT_RATIO_GROUPING = True
 # Labelmap file to convert to tsv or for demo purpose
-_C.DATASETS.LABELMAP_FILE = ''
+_C.DATASETS.LABELMAP_FILE = 'models/vinvl_vg_x152c4/VG-SGG-dicts-vgoi6-clipped.json'
 
 
 # ---------------------------------------------------------------------------- #
