@@ -11,20 +11,34 @@ Create your virtual environment an install the following dependencies according 
 
 Then run:
 ```bash
-# glone this repo
-git clone git@github.com:michelecafagna26/vinvl-visualbackbone.git
-
-# good practice
-pip install --upgrade pip
-
-# install the requirements
-pip install -r requirements.txt
-
-cd scene_graph_benchmark
-
-# install Scene Graph Detection with the VisualBackbone apis
-pyton setup.py build develop
+!git clone https://github.com/michelecafagna26/vinvl-visualbackbone.git
+%cd /content/vinvl-visualbackbone
+!pip install -r requirements.txt --quiet
+%cd /content
 ```
+
+```bash
+!pip install torch==1.13.1 torchvision==0.14.1 numpy==1.21.6 --quiet
+```
+
+```bash
+%cd /content/vinvl-visualbackbone/scene_graph_benchmark
+!python setup.py build develop --quiet
+%cd /content
+```
+
+```bash
+%cd /content/vinvl-visualbackbone/scene_graph_benchmark
+!mkdir -p models
+%cd models
+# download from the huggingface model hub
+!git lfs install # if not installed
+!git clone https://huggingface.co/michelecafagna26/vinvl_vg_x152c4
+%cd /content
+```
+
+
+
 You can check the original [INSTALL.md](INSTALL.md) for alternative installation options
 
 ## Model download
@@ -32,12 +46,13 @@ You can check the original [INSTALL.md](INSTALL.md) for alternative installation
 Download the model **before** running your code.
 
 ```bash
-mkdir -p scene_graph_benchmark/models/
-cd scene_graph_benchmark/models/
-
+%cd /content/vinvl-visualbackbone/scene_graph_benchmark
+!mkdir -p models
+%cd models
 # download from the huggingface model hub
-git lfs install # if not installed
-git clone https://huggingface.co/michelecafagna26/vinvl_vg_x152c4
+!git lfs install # if not installed
+!git clone https://huggingface.co/michelecafagna26/vinvl_vg_x152c4
+%cd /content
 ```
 <!-- ## Alternative Model download (links might be broken )**(deprecated)**
 
@@ -58,14 +73,11 @@ wget https://penzhanwu2.blob.core.windows.net/sgg/sgg_benchmark/vinvl_model_zoo/
 ## Quick start: feature extraction
 
 ```python
-from scene_graph_benchmark.wrappers import VinVLVisualBackbone
 
-img_file = "scene_graph_bechmark/demo/woman_fish.jpg"
-
-detector = VinVLVisualBackbone()
-
-dets = detector(img_file)
-
+img_file = "/content/vinvl-visualbackbone/scene_graph_benchmark/demo/woman_fish.jpg"
+feature_extractor = VinVLVisualBackbone()
+dets = feature_extractor(img_file)
+dets.keys()
 ```
 `dets` contains the following keys: ```["boxes", "classes", "scores", "features", "spatial_features"]```
 You can obtain the full VinVL's visual features by concatenating "features" and "spatial_features"
@@ -74,7 +86,7 @@ You can obtain the full VinVL's visual features by concatenating "features" and 
 import numpy as np
 
 v_feats = np.concatenate((dets['features'],  dets['spatial_features']), axis=1)
-# v_feats.shape = (num_boxes, 2054)
+v_feats.shape   # (num_boxes, 2054)
 ```
 ----
 ## Demo
